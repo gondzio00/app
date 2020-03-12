@@ -8,14 +8,14 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>First_name</th>
-                <th>Last_name</th>
+                <th>#</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
                 <th>Email</th>
-                <th>Expected_cost</th>
-                <th>Travel_type</th>
-                <th>Comments</th>
-                <th>actions</th>
+                <th>Spodziewany koszt</th>
+                <th>Typ</th>
+                <th>Opis</th>
+                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
@@ -29,8 +29,8 @@
                 <td>{{ person.travelType }}</td>
                 <td>{{ person.comments }}</td>
                 <td>
-                    <a href="{{ path('persons_show', {'id': person.id}) }}">show</a>
-                    <a href="{{ path('persons_edit', {'id': person.id}) }}">edit</a>
+                    <a href="{{ path('persons_show', {'id': person.id}) }}">Pokaż</a>
+                    <a href="{{ path('persons_edit', {'id': person.id}) }}">Edytuj</a>
                 </td>
             </tr>
         {% else %}
@@ -40,6 +40,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('persons_new') }}">Create new</a>
+    <a class="btn btn-success" role="button" href="{{ path('persons_new') }}">Create new</a>
 {% endblock %}
