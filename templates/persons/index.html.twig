@@ -7,16 +7,14 @@
 <h1>Manage Comments ({{ pagination.getTotalItemCount }})</h1>
 
     <h1>Lista użytkowników</h1>
-
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
                 <th>Imię</th>
                 <th>Nazwisko</th>
                 <th>Email</th>
-                <th>Spodziewany koszt</th>
-                <th>Typ</th>
+                <th>Oczekiwany koszt wycieczki</th>
+                <th>Rodzaj podróży</th>
                 <th>Opis</th>
                 <th>Akcje</th>
             </tr>
@@ -24,7 +22,6 @@
         <tbody>
         {% for person in pagination %}
             <tr>
-                <td>{{ person.id }}</td>
                 <td>{{ person.firstName }}</td>
                 <td>{{ person.lastName }}</td>
                 <td>{{ person.email }}</td>
@@ -32,6 +29,11 @@
                 <td>{{ person.travelType(true) }}</td>
                 <td>{{ person.comments }}</td>
                 <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default">Left</button>
+                        <button type="button" class="btn btn-default">Middle</button>
+                        <button type="button" class="btn btn-default">Right</button>
+                    </div>
                     <a href="{{ path('persons_show', {'id': person.id}) }}">Pokaż</a>
                     <a href="{{ path('persons_edit', {'id': person.id}) }}">Edytuj</a>
                 </td>
@@ -44,5 +46,5 @@
         </tbody>
     </table>
     {{ knp_pagination_render(pagination) }}
-    <a class="btn btn-success" role="button" href="{{ path('persons_new') }}">Create new</a>
+    <a class="btn btn-success" role="button" href="{{ path('persons_new') }}">Dodaj kandydata</a>
 {% endblock %}

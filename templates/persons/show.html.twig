@@ -1,22 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Persons{% endblock %}
+{% block title %}Uczestnik{% endblock %}
 
 {% block body %}
-    <h1>Persons</h1>
+    <h1>Uczestnik</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ person.id }}</td>
-            </tr>
-            <tr>
-                <th>First_name</th>
+                <th>Imię</th>
                 <td>{{ person.firstName }}</td>
             </tr>
             <tr>
-                <th>Last_name</th>
+                <th>Nazwisko</th>
                 <td>{{ person.lastName }}</td>
             </tr>
             <tr>
@@ -24,21 +20,21 @@
                 <td>{{ person.email }}</td>
             </tr>
             <tr>
-                <th>Expected_cost</th>
+                <th>Oczekiwany koszt wycieczki</th>
                 <td>{{ person.expectedCost }}</td>
             </tr>
             <tr>
-                <th>Travel_type</th>
+                <th>Rodzaj podróży</th>
                 <td>{{ person.travelType }}</td>
             </tr>
             <tr>
-                <th>Comments</th>
+                <th>Dodatkowe uwagi</th>
                 <td>{{ person.comments }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('persons_index') }}">back to list</a>
+    <a class="btn btn-default" role="button" href="{{ path('persons_index') }}">Powrót do listy kandydatów</a>
 
     <a href="{{ path('persons_edit', {'id': person.id}) }}">edit</a>
 
