@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Persons;
 use App\Form\PersonsType;
 use App\Repository\PersonsRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +19,18 @@ class PersonsController extends AbstractController
     /**
      * @Route("/", name="persons_index", methods={"GET"})
      */
-    public function index(PersonsRepository $personsRepository): Response
+    public function index(PersonsRepository $personsRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $q = $request->query->get('q');
+
+        $queryBuilder = $personsRepository->getWithSearchQueryBuilder($q);
+        $pagination = $paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
         return $this->render('persons/index.html.twig', [
-            'persons' => $personsRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
 

@@ -9,6 +9,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Persons
 {
+    public static $expectedCostList = array(
+        0 => '0-10 tyś.',
+        1 => '10-50 tyś.',
+        2 => '50-100 tyś.',
+    );
+
+    public static $travelTypeList = array(
+        '0' => 'w dwie strony',
+        '1' => 'tylko Mars',
+    );
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -87,9 +98,16 @@ class Persons
         return $this;
     }
 
-    public function getExpectedCost(): ?int
+    public function getExpectedCost($string = false)
     {
+        if($string)
+            return self::$expectedCostList[$this->expected_cost];
         return $this->expected_cost;
+    }
+
+    public function getExpectedCostValue(): ?string
+    {
+        return self::$expectedCostList[$this->expected_cost];
     }
 
     public function setExpectedCost(int $expected_cost): self
@@ -99,9 +117,17 @@ class Persons
         return $this;
     }
 
-    public function getTravelType(): ?int
+    public function getTravelType($string = false)
     {
+        if($string)
+            return self::$travelTypeList[$this->travel_type];
+
         return $this->travel_type;
+    }
+
+    public function getTravelTypeValue(): ?string
+    {
+        return self::$travelTypeList[$this->travel_type];
     }
 
     public function setTravelType(int $travel_type): self
@@ -122,4 +148,5 @@ class Persons
 
         return $this;
     }
+    
 }
