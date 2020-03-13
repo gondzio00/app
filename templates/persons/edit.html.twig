@@ -5,9 +5,14 @@
 {% block body %}
     <h1>Edytuj uczestnika</h1>
 
+
     {{ include('persons/_form.html.twig', {'button_label': 'Zaaktualizuj'}) }}
-
+   
+    <div class="col-md-6 text-left"> 
     <a class="btn btn-default" role="button" href="{{ path('persons_index') }}">Powrót do listy kandydatów</a>
+    </div>
 
+     <div class="col-md-6 text-right"> 
     {{ include('persons/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

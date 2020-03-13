@@ -3,5 +3,12 @@
 {% block title %}New Persons{% endblock %}
 
 {% block body %}
-    <h1>H1</h1>
+    <div class="jumbotron">
+        <h1>Mission Apollo 1.0</h1>
+        <p>Witaj na stronie poświęconej wycieczce na Marsa statkiem IIITSpace</p>
+        <p>
+            <a class="btn btn-default" role="button" href="{{ path('persons_index') }}">Pokaż listę kandydatów</a>
+            <a class="btn btn-success" role="button" href="{{ path('persons_new') }}">Dodaj nowego kandydata</a>
+        </p>
+    </div>
 {% endblock %}
